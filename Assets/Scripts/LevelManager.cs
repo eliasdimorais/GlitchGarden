@@ -7,9 +7,8 @@ public class LevelManager : MonoBehaviour
 	public float autoLoadNextLevelAfter;
 	
 	void Start(){
-		if(autoLoadNextLevelAfter == 0){
-			Debug.Log("Load Splash Screen");
-		
+		if(autoLoadNextLevelAfter <= 0){
+			Debug.Log("Level auto load DISABLED, use a positive number in SECONDS");
 		}else{
 			Invoke ("LoadNextLevel", autoLoadNextLevelAfter);
 		}
