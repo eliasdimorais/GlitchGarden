@@ -5,6 +5,8 @@ using System.Collections;
 public class Attacker : MonoBehaviour {
 
 	//[Range (-1.0f, 1.5f)]public float currentSpeed;
+	[Tooltip("Average apearance in seconds of new attacker on the screen")]
+	public float seenEverySeconds;
 	private float currentSpeed;
 	private GameObject currentTarget;
 	private Animator animator;
@@ -21,10 +23,11 @@ public class Attacker : MonoBehaviour {
 		if(!currentTarget){
 			animator.SetBool("isAttacking", false);
 		}
+		//print(Button.selectedDefender);
 	}
 
 	void OnTriggerEnter2D(){
-		Debug.Log (name + "  trigger Enter");
+		//Debug.Log (name + "  trigger Enter");
 	}
 	
 	public void SetSpeed (float speed){

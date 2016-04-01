@@ -3,24 +3,40 @@ using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 
-	public GameObject PauseUI;
-	private bool paused = false;
+	public GameObject pausePanel;
+	private bool isPaused;
 	
 	void Start () {
-		PauseUI.SetActive(false);
+		isPaused = false;
 	}
 	
 	void Update(){
+		if(isPaused){
+			PauseGame(true);
+		}else{
+			PauseGame(false);
+		}
 		if(Input.GetButtonDown("Pause")){
-			paused = !paused;
+			SwitchPause();
 		}
-		if(paused){
-			PauseUI.SetActive(true);
-			Time.timeScale = 0;
+	}
+
+
+
+	void PauseGame(bool state){
+		if(state){
+			Time.timeScale = 0.0f;
+		}else{
+			Time.timeScale = 1.0f; 
 		}
-		if(!paused){
-			PauseUI.SetActive(false);
-			Time.timeScale = 1; //if 0.3 is slow motion effect
+		pausePanel.SetActive(state);
+	}
+
+	public void SwitchPause(){
+		if(isPaused){
+			isPaused = false;
+		}else{
+			isPaused = true;
 		}
 	}
 	
